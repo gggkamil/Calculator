@@ -31,27 +31,27 @@
         <Button Text="4" Grid.Row="3" Grid.Column="0" 
                Clicked="ClickedOnNumber" />
         <Button Text="1" Grid.Row="4" Grid.Column="0" 
-               Clicked="ClickedOnClear" />
+               Clicked="ClickedOnNumber" />
         <Button Text="" Grid.Row="5" Grid.Column="0" 
                Clicked="ClickedOnClear" />
         <Button Text="B" Grid.Row="1" Grid.Column="1" 
                Clicked="ClickedOnClear" />
         <Button Text="8" Grid.Row="2" Grid.Column="1" 
-               Clicked="ClickedOnClear" />
+               Clicked="ClickedOnNumber" />
         <Button Text="5" Grid.Row="3" Grid.Column="1" 
-               Clicked="ClickedOnClear" />
+               Clicked="ClickedOnNumber" />
         <Button Text="2" Grid.Row="4" Grid.Column="1" 
-               Clicked="ClickedOnClear" />
+               Clicked="ClickedOnNumber" />
         <Button Text="0" Grid.Row="5" Grid.Column="1" 
-               Clicked="ClickedOnClear" />
+               Clicked="ClickedOnNumber" />
         <Button Text="%" Grid.Row="1" Grid.Column="2" 
                Clicked="ClickedOnClear" />
         <Button Text="9" Grid.Row="2" Grid.Column="2" 
-               Clicked="ClickedOnClear" />
+               Clicked="ClickedOnNumber" />
         <Button Text="6" Grid.Row="3" Grid.Column="2" 
-               Clicked="ClickedOnClear" />
+               Clicked="ClickedOnNumber" />
         <Button Text="3" Grid.Row="4" Grid.Column="2" 
-               Clicked="ClickedOnClear" />
+               Clicked="ClickedOnNumber" />
         <Button Text="," Grid.Row="5" Grid.Column="2" 
                Clicked="ClickedOnClear" />
         <Button Text="/" Grid.Row="1" Grid.Column="3" 
