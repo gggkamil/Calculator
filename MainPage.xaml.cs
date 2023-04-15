@@ -9,9 +9,17 @@ public partial class MainPage : ContentPage
 		ClickedOnClear(this, null);
 	}
 
+	int currentState = 0;
+
 	void ClickedOnClear(object sender, EventArgs e)
 	{
+		currentState = 0;
 
+	}
+	void ClickedOnNumber(object sender, EventArgs e)
+	{
+		Button button= (Button)sender;
+		string pressed = button.Text;
 	}
 }
 
