@@ -14,7 +14,7 @@ public partial class MainPage : ContentPage
     int currentState = 1;
     string currentInput = "";
     string decimalFormat = "N0";
-    double x = 0, y = 0;
+    double x, y;
     string mathOperator;
 
     void ClickedOnClear(object sender, EventArgs e)
@@ -58,7 +58,6 @@ public partial class MainPage : ContentPage
         string pressed = button.Text;
         mathOperator = pressed;
 
-        currentInput = string.Empty;
     }
 
     private void NumberValue(string text)
@@ -91,8 +90,8 @@ public partial class MainPage : ContentPage
 
             double result = Calculator.Calculate(x, y, mathOperator);
 
-            CurrentCalculation.Text = $"{x} {mathOperator} {y}";
-            resultText.Text = result.ToString(decimalFormat);
+            this.CurrentCalculation.Text = $"{x} {mathOperator} {y}";
+            this.resultText.Text = result.ToString(decimalFormat);
             x = result;
             y = 0;
             currentState = -1;
