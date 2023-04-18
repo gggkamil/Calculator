@@ -17,37 +17,31 @@ public partial class MainPage : ContentPage
     double x, y;
     string mathOperator;
 
-    void ClickedOnClear(object sender, EventArgs e)
-    {
-        this.resultText.Text = "0";
-        x = 0;
-        y = 0;
-        currentState = 1;
-        decimalFormat = "N0";
-        currentInput = string.Empty;
 
-    }
     void ClickedOnNumber(object sender, EventArgs e)
     {
         Button button = (Button)sender;
         string pressed = button.Text;
 
-        if (currentInput.Length == 1 && currentInput == "0" && pressed != ".")
+       
+        if ((this.resultText.Text == "0" && pressed == "0") || (currentInput.Length <= 1 && pressed != "0") || currentState < 0)
         {
             currentInput = "";
+            this.resultText.Text = "";
+            if (currentState < 0)
+                currentState *= -1;
         }
 
-        if (pressed == "." && currentInput.Contains("."))
-        {
-            return;
-        }
-
-        this.resultText.Text = currentInput += pressed;
-
+        //if (pressed == "." && currentInput.Contains("."))
+        //{
+        //    return;
+        //}
+        
         if (pressed == "." && decimalFormat != "N2")
         {
             decimalFormat = "N2";
         }
+        this.resultText.Text+= pressed;
     }
 
     void ClickedOnOperator(object sender, EventArgs e)
@@ -75,6 +69,16 @@ public partial class MainPage : ContentPage
             }
             currentInput = string.Empty;
         }
+    }
+    void ClickedOnClear(object sender, EventArgs e)
+    {
+        this.resultText.Text = "0";
+        x = 0;
+        y = 0;
+        currentState = 1;
+        decimalFormat = "N0";
+        currentInput = string.Empty;
+
     }
     void ClickedOnEqual(object sender, EventArgs e)
     {
