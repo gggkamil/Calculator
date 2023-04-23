@@ -23,8 +23,10 @@ public partial class MainPage : ContentPage
         Button button = (Button)sender;
         string pressed = button.Text;
 
-       
-        if ((this.resultText.Text == "0" && pressed == "0") || (currentInput.Length <= 1 && pressed != "0") || currentState < 0)
+
+        if ((this.resultText.Text == "0" && pressed == "0")
+    || (currentEntry.Length <= 1 && pressed != "0")
+    || currentState < 0)
         {
             currentInput = "";
             this.resultText.Text = "";
