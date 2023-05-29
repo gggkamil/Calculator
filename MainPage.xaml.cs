@@ -34,11 +34,11 @@ public partial class MainPage : ContentPage
                 currentState *= -1;
         }
 
-        //if (pressed == "." && currentInput.Contains("."))
-        //{
-        //    return;
-        //}
-        
+        if (pressed == "." && currentInput.Contains("."))
+        {
+            return;
+        }
+
         if (pressed == "." && decimalFormat != "N2")
         {
             decimalFormat = "N2";
