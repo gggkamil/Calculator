@@ -4,7 +4,9 @@ namespace Calculator;
 
 public partial class MainPage : ContentPage
 {
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MainPage"/> class.
+    /// </summary>
     public MainPage()
     {
         InitializeComponent();
@@ -17,16 +19,21 @@ public partial class MainPage : ContentPage
     double x, y;
     string mathOperator;
 
-
+    /// <summary>
+    /// Handles the Click event of number buttons.
+    /// </summary>
+    /// <param name="sender">The object that raised the event.</param>
+    /// <param name="e">The event data.</param>
     void ClickedOnNumber(object sender, EventArgs e)
     {
         Button button = (Button)sender;
         string pressed = button.Text;
 
 
-        if ((this.resultText.Text == "0" && pressed == "0")
-    || (currentEntry.Length <= 1 && pressed != "0")
-    || currentState < 0)
+       
+               if ((this.resultText.Text == "0" && pressed == "0")
+            || (currentEntry.Length <= 1 && pressed != "0")
+            || currentState < 0)
         {
             currentInput = "";
             this.resultText.Text = "";
@@ -45,7 +52,11 @@ public partial class MainPage : ContentPage
         }
         this.resultText.Text+= pressed;
     }
-
+    /// <summary>
+    /// Handles the Click event of operator buttons.
+    /// </summary>
+    /// <param name="sender">The object that raised the event.</param>
+    /// <param name="e">The event data.</param>
     void ClickedOnOperator(object sender, EventArgs e)
     {
         NumberValue(resultText.Text);
@@ -55,7 +66,10 @@ public partial class MainPage : ContentPage
         mathOperator = pressed;
 
     }
-
+    /// <summary>
+    /// Assigns the numeric value of the text to the appropriate variable.
+    /// </summary>
+    /// <param name="text">The text to convert to a number.</param>
     private void NumberValue(string text)
     {
         double number;
@@ -72,6 +86,11 @@ public partial class MainPage : ContentPage
             currentInput = string.Empty;
         }
     }
+    /// <summary>
+    /// Handles the Click event of the "Clear" button.
+    /// </summary>
+    /// <param name="sender">The object that raised the event.</param>
+    /// <param name="e">The event data.</param>
     void ClickedOnClear(object sender, EventArgs e)
     {
         this.resultText.Text = "0";
@@ -104,6 +123,11 @@ public partial class MainPage : ContentPage
             currentInput = "";
         }
     }
+    /// <summary>
+    /// Handles the Click event of the "Equal" button.
+    /// </summary>
+    /// <param name="sender">The object that raised the event.</param>
+    /// <param name="e">The event data.</param>
     void ClickedOnDivide(object sender, EventArgs e)
     {
         if (currentState == 1)

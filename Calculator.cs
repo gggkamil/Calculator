@@ -33,6 +33,18 @@ namespace Calculator
             }
             return result;
         }
+        public static string ToTrimmedString(this double target, string decimalFormat) =>
+    target.ToString(decimalFormat) switch
+    {
+        var strValue when strValue.Contains(".") =>
+            strValue.TrimEnd('0') switch
+            {
+                var trimmedStr when trimmedStr.EndsWith(".") => trimmedStr.TrimEnd('.'),
+                var trimmedStr => trimmedStr
+            },
+        var strValue => strValue
+    };
+
     }
 
 }
