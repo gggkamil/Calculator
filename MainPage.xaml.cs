@@ -29,6 +29,7 @@ public partial class MainPage : ContentPage
         Button button = (Button)sender;
         string pressed = button.Text;
 
+
        
                if ((this.resultText.Text == "0" && pressed == "0")
             || (currentEntry.Length <= 1 && pressed != "0")
@@ -40,11 +41,11 @@ public partial class MainPage : ContentPage
                 currentState *= -1;
         }
 
-        //if (pressed == "." && currentInput.Contains("."))
-        //{
-        //    return;
-        //}
-        
+        if (pressed == "." && currentInput.Contains("."))
+        {
+            return;
+        }
+
         if (pressed == "." && decimalFormat != "N2")
         {
             decimalFormat = "N2";
