@@ -13,7 +13,8 @@
                Text=""
                HorizontalTextAlignment="End"
                VerticalTextAlignment="Start"
-               Grid.Row="0"/>
+               Grid.Row="0"
+                />
 
         <Label x:Name="resultText"
                FontSize="64" FontAttributes="Bold" Text="0"
@@ -25,7 +26,8 @@
             
 
         <Button Text="C" Grid.Row="1" Grid.Column="0" 
-               Clicked="ClickedOnClear" />
+               Clicked="ClickedOnClear" 
+                Background="lightgreen"/>
         <Button Text="7" Grid.Row="2" Grid.Column="0" 
                Clicked="ClickedOnNumber" />
         <Button Text="4" Grid.Row="3" Grid.Column="0" 
@@ -33,7 +35,8 @@
         <Button Text="1" Grid.Row="4" Grid.Column="0" 
                Clicked="ClickedOnNumber" />
         <Button Text="B" Grid.Row="1" Grid.Column="1" 
-               Clicked="ClickedOnClear" />
+               Clicked="ClickedOnClear" 
+                Background="lightgreen"/>
         <Button Text="8" Grid.Row="2" Grid.Column="1" 
                Clicked="ClickedOnNumber" />
         <Button Text="5" Grid.Row="3" Grid.Column="1" 
@@ -43,7 +46,8 @@
         <Button Text="0" Grid.Row="5" Grid.Column="1" 
                Clicked="ClickedOnNumber" />
         <Button Text="%" Grid.Row="1" Grid.Column="2" 
-               Clicked="ClickedOnDivide" />
+               Clicked="ClickedOnDivide" 
+                Background="lightgreen"/>
         <Button Text="9" Grid.Row="2" Grid.Column="2" 
                Clicked="ClickedOnNumber" />
         <Button Text="6" Grid.Row="3" Grid.Column="2" 
@@ -53,15 +57,20 @@
         <Button Text="," Grid.Row="5" Grid.Column="2" 
                Clicked="ClickedOnNumber" />
         <Button Text="/" Grid.Row="1" Grid.Column="3" 
-               Clicked="ClickedOnOperator" />
+               Clicked="ClickedOnOperator" 
+                Background="lightgreen"/>
         <Button Text="x" Grid.Row="2" Grid.Column="3" 
-               Clicked="ClickedOnOperator" />
+               Clicked="ClickedOnOperator" 
+                Background="lightgreen"/>
         <Button Text="-" Grid.Row="3" Grid.Column="3" 
-               Clicked="ClickedOnOperator" />
+               Clicked="ClickedOnOperator" 
+                Background="lightgreen"/>
         <Button Text="+" Grid.Row="4" Grid.Column="3" 
-               Clicked="ClickedOnOperator" />
+               Clicked="ClickedOnOperator" 
+                Background="lightgreen"/>
         <Button Text="=" Grid.Row="5" Grid.Column="3" 
-               Clicked="ClickedOnEqual" />
+               Clicked="ClickedOnEqual" 
+                Background="lightgreen"/>
 
     </Grid>
 

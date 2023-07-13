@@ -14,6 +14,7 @@ public partial class MainPage : ContentPage
     }
 
     int currentState = 1;
+    string currentEntry = "";
     string currentInput = "";
     string decimalFormat = "N0";
     double x, y;
