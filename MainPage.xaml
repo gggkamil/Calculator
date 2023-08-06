@@ -72,7 +72,7 @@
                Clicked="ClickedOnEqual" 
                 Background="lightgreen"/>
         <Button Text="^" Grid.Row="5" Grid.Column="0" 
-                Clicked="ClickedOnOperator" 
+                Clicked="ClickedOnRoots" 
                 Background="lightgreen"/>
     </Grid>
 

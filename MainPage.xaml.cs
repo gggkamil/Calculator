@@ -64,6 +64,9 @@ public partial class MainPage : ContentPage
         currentState = -2;
         Button button = (Button)sender;
         string pressed = button.Text;
+            if (pressed == "^")
+        mathOperator = "^"; // For "^" operator
+    else
         mathOperator = pressed;
 
     }
@@ -86,6 +89,12 @@ public partial class MainPage : ContentPage
             }
             currentInput = string.Empty;
         }
+            if (currentState == -2 && mathOperator == "^")
+    {
+        x = Math.Pow(x, y);
+        currentState = 2;
+        currentInput = string.Empty;
+    }
     }
     /// <summary>
     /// Handles the Click event of the "Clear" button.
@@ -141,4 +150,17 @@ public partial class MainPage : ContentPage
             ClickedOnEqual(this, null);
         }
     }
+    void ClickedOnRoots(object sender, EventArgs e)
+{
+    if (currentState == 1)
+    {
+        decimalFormat = "N2";
+        NumberValue(resultText.Text);
+        x = Math.Sqrt(x);
+        this.CurrentCalculation.Text = $"√({x})";
+        this.resultText.Text = x.ToString(decimalFormat);
+        currentState = -1;
+        currentInput = "";
+    }
+}
 }
