@@ -71,7 +71,9 @@
         <Button Text="=" Grid.Row="5" Grid.Column="3" 
                Clicked="ClickedOnEqual" 
                 Background="lightgreen"/>
-
+        <Button Text="^" Grid.Row="5" Grid.Column="0" 
+                Clicked="ClickedOnOperator" 
+                Background="lightgreen"/>
     </Grid>
 
 
