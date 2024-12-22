@@ -33,7 +33,9 @@ public partial class MainPage : ContentPage
             currentState *= -1;
         }
 
-        if (resultText.Text == "0" && pressed != ".")
+        if (pressed == "," && resultText.Text.Contains(",")) return;
+
+        if (resultText.Text == "0" && pressed != ",")
         {
             resultText.Text = pressed; // Start fresh if "0" is the only input
         }
@@ -54,7 +56,11 @@ public partial class MainPage : ContentPage
 
     private void NumberValue(string text)
     {
-        if (double.TryParse(text, out double number))
+        // Replace comma with dot for consistent parsing
+        text = text.Replace(',', '.');
+
+        if (double.TryParse(text, System.Globalization.NumberStyles.Any,
+                System.Globalization.CultureInfo.InvariantCulture, out double number))
         {
             if (currentState == 1)
             {
@@ -78,35 +84,24 @@ public partial class MainPage : ContentPage
 
     void ClickedOnEqual(object sender, EventArgs e)
     {
+       
         if (currentState == 2)
         {
+            NumberValue(resultText.Text);
             if (mathOperator == "÷" && y == 0)
             {
                 resultText.Text = "Error";
                 return;
             }
 
-            NumberValue(resultText.Text);
+            
             double result = Calculator.Calculate(x, y, mathOperator);
-
+            decimalFormat = "N2";
             CurrentCalculation.Text = $"{x} {mathOperator} {y}";
             resultText.Text = result.ToString(decimalFormat);
             x = result;
             y = 0;
             currentState = -1;
-        }
-    }
-
-    void ClickedOnDivide(object sender, EventArgs e)
-    {
-        if (currentState == 1)
-        {
-            decimalFormat = "N2";
-            NumberValue(resultText.Text);
-            y = x * 0.01;
-            mathOperator = "/";
-            currentState = 2;
-            ClickedOnEqual(this, null);
         }
     }
 
@@ -124,7 +119,7 @@ public partial class MainPage : ContentPage
             resultText.Text = y.ToString(decimalFormat);
 
             currentState = 2;
-            ClickedOnEqual(this, null);
+           // ClickedOnEqual(this, null);
         }
     
     }

@@ -27,7 +27,7 @@ namespace Calculator
                     result = x/y;
                     break;
                 case "%":
-                    result = x*y/y;
+                    result = (x*y)/100;
                     break;
 
             }

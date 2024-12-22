@@ -46,7 +46,7 @@
         <Button Text="0" Grid.Row="5" Grid.Column="1" 
                Clicked="ClickedOnNumber" />
         <Button Text="%" Grid.Row="1" Grid.Column="2" 
-               Clicked="ClickedOnDivide" 
+               Clicked="ClickedOnOperator" 
                 Background="lightgreen"/>
         <Button Text="9" Grid.Row="2" Grid.Column="2" 
                Clicked="ClickedOnNumber" />
