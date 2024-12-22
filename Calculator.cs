@@ -21,20 +21,18 @@ namespace Calculator
                     result = x - y;
                     break;
                 case "x":
-                    result = x*y; 
+                    result = x * y;
                     break;
                 case "/":
                     result = x / y;
                     break;
                 case "%":
-                    result = (x*y)/100;
+                    result = (x * y) / 100;
                     break;
-                default:
-                    throw new ArgumentException("Invalid operator");
+
             }
             return result;
         }
-
         public static string ToTrimmedString(this double target, string decimalFormat) =>
             target.ToString(decimalFormat) switch
             {
@@ -46,5 +44,7 @@ namespace Calculator
                     },
                 var strValue => strValue
             };
+
     }
+
 }
