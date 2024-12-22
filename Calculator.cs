@@ -20,7 +20,7 @@ namespace Calculator
                 case "-":
                     result = x-y;
                     break;
-                case "*":
+                case "x":
                     result = x*y; 
                     break;
                 case "/":

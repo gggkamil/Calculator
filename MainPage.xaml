@@ -34,8 +34,8 @@
                Clicked="ClickedOnNumber" />
         <Button Text="1" Grid.Row="4" Grid.Column="0" 
                Clicked="ClickedOnNumber" />
-        <Button Text="B" Grid.Row="1" Grid.Column="1" 
-               Clicked="ClickedOnClear" 
+        <Button Text="Netto" Grid.Row="1" Grid.Column="1" 
+               Clicked="ClickedOnNetto" 
                 Background="lightgreen"/>
         <Button Text="8" Grid.Row="2" Grid.Column="1" 
                Clicked="ClickedOnNumber" />

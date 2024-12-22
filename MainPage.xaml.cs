@@ -4,9 +4,6 @@ namespace Calculator;
 
 public partial class MainPage : ContentPage
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MainPage"/> class.
-    /// </summary>
     public MainPage()
     {
         InitializeComponent();
@@ -15,66 +12,49 @@ public partial class MainPage : ContentPage
 
     int currentState = 1;
     string currentEntry = "";
-    string currentInput = "";
     string decimalFormat = "N0";
     double x, y;
     string mathOperator;
+    private double ubezEmerytalne = 0.0976;
+    private double ubezRentowe=0.015;
+    private double ubezChorobowe = 0.0245;
+    private double skladka = 0;
+    private double z;
 
-    /// <summary>
-    /// Handles the Click event of number buttons.
-    /// </summary>
-    /// <param name="sender">The object that raised the event.</param>
-    /// <param name="e">The event data.</param>
+
     void ClickedOnNumber(object sender, EventArgs e)
     {
         Button button = (Button)sender;
         string pressed = button.Text;
 
-
-       
-               if ((this.resultText.Text == "0" && pressed == "0")
-            || (currentEntry.Length <= 1 && pressed != "0")
-            || currentState < 0)
+        if (currentState < 0)
         {
-            currentInput = "";
-            this.resultText.Text = "";
-            if (currentState < 0)
-                currentState *= -1;
+            resultText.Text = "0";
+            currentState *= -1;
         }
 
-        if (pressed == "." && currentInput.Contains("."))
+        if (resultText.Text == "0" && pressed != ".")
         {
-            return;
+            resultText.Text = pressed; // Start fresh if "0" is the only input
         }
-
-        if (pressed == "." && decimalFormat != "N2")
+        else
         {
-            decimalFormat = "N2";
+            resultText.Text += pressed; // Append input for multi-digit numbers
         }
-        this.resultText.Text+= pressed;
     }
-    /// <summary>
-    /// Handles the Click event of operator buttons.
-    /// </summary>
-    /// <param name="sender">The object that raised the event.</param>
-    /// <param name="e">The event data.</param>
+
     void ClickedOnOperator(object sender, EventArgs e)
     {
         NumberValue(resultText.Text);
         currentState = -2;
         Button button = (Button)sender;
-        string pressed = button.Text;
-        mathOperator = pressed;
-
+        mathOperator = button.Text;
+       
     }
-    /// <summary>
-    /// Assigns the numeric value of the text to the appropriate variable.
-    /// </summary>
-    /// <param name="text">The text to convert to a number.</param>
+
     private void NumberValue(string text)
     {
-        double number;
-        if (double.TryParse(text, out number))
+        if (double.TryParse(text, out double number))
         {
             if (currentState == 1)
             {
@@ -84,51 +64,39 @@ public partial class MainPage : ContentPage
             {
                 y = number;
             }
-            currentInput = string.Empty;
         }
     }
-    /// <summary>
-    /// Handles the Click event of the "Clear" button.
-    /// </summary>
-    /// <param name="sender">The object that raised the event.</param>
-    /// <param name="e">The event data.</param>
+
     void ClickedOnClear(object sender, EventArgs e)
     {
-        this.resultText.Text = "0";
+        resultText.Text = "0";
         x = 0;
         y = 0;
         currentState = 1;
         decimalFormat = "N0";
-        currentInput = string.Empty;
-
     }
+
     void ClickedOnEqual(object sender, EventArgs e)
     {
         if (currentState == 2)
         {
-            if (y == 0)
-                NumberValue(resultText.Text);
             if (mathOperator == "÷" && y == 0)
             {
                 resultText.Text = "Error";
                 return;
             }
 
+            NumberValue(resultText.Text);
             double result = Calculator.Calculate(x, y, mathOperator);
 
-            this.CurrentCalculation.Text = $"{x} {mathOperator} {y}";
-            this.resultText.Text = result.ToString(decimalFormat);
+            CurrentCalculation.Text = $"{x} {mathOperator} {y}";
+            resultText.Text = result.ToString(decimalFormat);
             x = result;
             y = 0;
             currentState = -1;
-            currentInput = "";
         }
     }
-    /// <summary>
-    /// Handles the Click event of the "Equal" button.
-    /// </summary>
-    /// <param name="sender">The object that raised the event.</param>
-    /// <param name="e">The event data.</param>
+
     void ClickedOnDivide(object sender, EventArgs e)
     {
         if (currentState == 1)
@@ -140,5 +108,24 @@ public partial class MainPage : ContentPage
             currentState = 2;
             ClickedOnEqual(this, null);
         }
+    }
+
+    void ClickedOnNetto(object sender, EventArgs e)
+    {
+        if (currentState == 1)
+        {
+            NumberValue(resultText.Text);
+            z = (x - (x * ubezRentowe) - (x * ubezChorobowe) - (x * ubezEmerytalne));
+            skladka = z*0.09;
+            double q = z - 250;
+            double zaliczka = double.Round((q * 0.12)-300);
+            y = z - skladka - zaliczka;
+            decimalFormat = "N2";
+            resultText.Text = y.ToString(decimalFormat);
+
+            currentState = 2;
+            ClickedOnEqual(this, null);
+        }
+    
     }
 }
