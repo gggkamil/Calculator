@@ -71,6 +71,11 @@ public partial class MainPage : ContentPage
                 y = number;
             }
         }
+            if (currentState == -2 && mathOperator == "^")
+    {
+        x = Math.Pow(x, y);
+        currentState = 2;
+        currentInput = string.Empty;
     }
 
     void ClickedOnClear(object sender, EventArgs e)
@@ -123,4 +128,17 @@ public partial class MainPage : ContentPage
         }
     
     }
+    void ClickedOnRoots(object sender, EventArgs e)
+{
+    if (currentState == 1)
+    {
+        decimalFormat = "N2";
+        NumberValue(resultText.Text);
+        x = Math.Sqrt(x);
+        this.CurrentCalculation.Text = $"√({x})";
+        this.resultText.Text = x.ToString(decimalFormat);
+        currentState = -1;
+        currentInput = "";
+    }
+}
 }
