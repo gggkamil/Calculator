@@ -20,14 +20,14 @@ namespace Calculator
                 case "-":
                     result = x-y;
                     break;
-                case "*":
+                case "x":
                     result = x*y; 
                     break;
                 case "/":
                     result = x/y;
                     break;
                 case "%":
-                    result = x*y/y;
+                    result = (x*y)/100;
                     break;
 
             }
