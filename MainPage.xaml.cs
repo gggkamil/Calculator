@@ -16,7 +16,7 @@ public partial class MainPage : ContentPage
     double x, y;
     string mathOperator;
     private double ubezEmerytalne = 0.0976;
-    private double ubezRentowe=0.015;
+    private double ubezRentowe = 0.015;
     private double ubezChorobowe = 0.0245;
     private double skladka = 0;
     private double z;
@@ -51,7 +51,7 @@ public partial class MainPage : ContentPage
         currentState = -2;
         Button button = (Button)sender;
         mathOperator = button.Text;
-       
+
     }
 
     private void NumberValue(string text)
@@ -71,11 +71,6 @@ public partial class MainPage : ContentPage
                 y = number;
             }
         }
-            if (currentState == -2 && mathOperator == "^")
-    {
-        x = Math.Pow(x, y);
-        currentState = 2;
-        currentInput = string.Empty;
     }
 
     void ClickedOnClear(object sender, EventArgs e)
@@ -89,7 +84,7 @@ public partial class MainPage : ContentPage
 
     void ClickedOnEqual(object sender, EventArgs e)
     {
-       
+
         if (currentState == 2)
         {
             NumberValue(resultText.Text);
@@ -99,7 +94,7 @@ public partial class MainPage : ContentPage
                 return;
             }
 
-            
+
             double result = Calculator.Calculate(x, y, mathOperator);
             decimalFormat = "N2";
             CurrentCalculation.Text = $"{x} {mathOperator} {y}";
@@ -116,29 +111,16 @@ public partial class MainPage : ContentPage
         {
             NumberValue(resultText.Text);
             z = (x - (x * ubezRentowe) - (x * ubezChorobowe) - (x * ubezEmerytalne));
-            skladka = z*0.09;
+            skladka = z * 0.09;
             double q = z - 250;
-            double zaliczka = double.Round((q * 0.12)-300);
+            double zaliczka = double.Round((q * 0.12) - 300);
             y = z - skladka - zaliczka;
             decimalFormat = "N2";
             resultText.Text = y.ToString(decimalFormat);
 
             currentState = 2;
-           // ClickedOnEqual(this, null);
+            // ClickedOnEqual(this, null);
         }
-    
+
     }
-    void ClickedOnRoots(object sender, EventArgs e)
-{
-    if (currentState == 1)
-    {
-        decimalFormat = "N2";
-        NumberValue(resultText.Text);
-        x = Math.Sqrt(x);
-        this.CurrentCalculation.Text = $"√({x})";
-        this.resultText.Text = x.ToString(decimalFormat);
-        currentState = -1;
-        currentInput = "";
-    }
-}
 }
